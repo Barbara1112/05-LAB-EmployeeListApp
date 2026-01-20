@@ -1,10 +1,14 @@
-﻿using EmployeeListApp.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext : DbContext
+namespace EmployeeListApp.Data
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options) { }
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
 
-    public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+    }
 }

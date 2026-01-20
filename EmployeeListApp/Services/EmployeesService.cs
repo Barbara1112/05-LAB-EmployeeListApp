@@ -1,4 +1,6 @@
 ﻿using EmployeeListApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace EmployeeListApp.Services
 {
     public class EmployeesService
@@ -12,7 +14,7 @@ namespace EmployeeListApp.Services
 
         public async Task<List<Employee>> GetEmployeesAsync()
         {
-            return await Task.FromResult(_context.Employees.ToList());
+            return await _context.Employees.ToListAsync();
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(string id)
@@ -36,7 +38,6 @@ namespace EmployeeListApp.Services
             emp.Department = e.Department;
             emp.Salary = e.Salary;
 
-            _context.Employees.Update(emp);
             await _context.SaveChangesAsync();
             return emp;
         }
@@ -51,5 +52,4 @@ namespace EmployeeListApp.Services
             return emp;
         }
     }
-
 }
